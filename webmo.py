@@ -3,7 +3,7 @@
 """
 Webmo
 
-Version 0.3
+Version 0.21
 Enter full URL and monitor frequency in seconds to get started
 """
 
@@ -20,7 +20,7 @@ from ConfigParser import SafeConfigParser
 # Get current time in pretty format
 def pretty_time():
 	now = datetime.now()
-	pretty_time_format = str(now.year)+'-'+str(now.month)+'-'+str(now.day)+' '+str(now.hour)+':'+str(now.minute)+':'+str(now.second)
+	pretty_time_format = now.strftime("%Y-%m-%d %H:%M:%S")
 	return pretty_time_format
 	
 # Query the content from given URL
