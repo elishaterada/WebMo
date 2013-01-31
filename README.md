@@ -1,5 +1,5 @@
 WebMo
-======================
+========
 
 *Version 0.2*
 
@@ -11,9 +11,10 @@ This program simply compares the length of old and new content so this would not
 The program needs to account for potential user errors
 
 Setup
----------------------
+--------
 
-# Edit settings.cfg
-# Enter following arguments and run
-## Full website URL
-## Monitor frequency in seconds (e.g. 3600 for 1 hour)
+1. Edit settings.cfg
+
+2. Enter following arguments and run
+* Full website URL
+* Monitor frequency in seconds (e.g. 3600 for 1 hour)
