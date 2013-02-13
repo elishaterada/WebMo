@@ -1,20 +1,23 @@
 WebMo
 ========
 
-*Version 0.21*
+*Version 0.22*
 
-WebMo is a Python script that monitors the website and email you when the difference is found.
-This program simply compares the length of old and new content so this would not work well for websites that returns different content every time you query (e.g. Google).
-
-*Upcoming Features*
-
-The program needs to account for potential user errors
+WebMo is a Python script that monitors the website notify you via email when any difference is found.
 
 Setup
---------
+-----
 
-1. Edit settings.cfg
+1. Add your Gmail account information in settings.cfg
 
 2. Enter following arguments and run
 - Full website URL
 - Monitor frequency in seconds (e.g. 3600 for 1 hour)
+
+Notice
+------
+
+* This program is tested on Python 2.7.2
+* You need BeautifulSoup installed in your Python environment
+* This program will use your Gmail account to send email so your computer doesn't need to be setup to send email.
+* This program simply compares the length of old and new content so this does not work for websites that return different length of content every time (e.g. http://google.com/).

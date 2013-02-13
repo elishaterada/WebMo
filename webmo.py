@@ -3,7 +3,6 @@
 """
 Webmo
 
-Version 0.21
 Enter full URL and monitor frequency in seconds to get started
 """
 
@@ -75,20 +74,17 @@ def main(argv=None):
     website_url = argv[1]
     monitor_frequency = argv[2]
 
-    old_content = ""
+    #1 Initial query for the website content to compare against new query
+    old_content = website_content_query(website_url)
 
     while True:
 
-        #1 Query for the website content
+        #2 Compare length of old and new content and process the result
         new_content = website_content_query(website_url)
 
-        #2 Compare length of old and new content and process the result
-        current_time = pretty_time()
+        if len(new_content) != len(old_content):
 
-        if old_content is "":
-            old_content = new_content
-            continue
-        elif len(new_content) != len(old_content):
+            current_time = pretty_time()
             result = current_time + " - Updated - " + website_url + "\n"
 
             # Send email notification
@@ -96,7 +92,9 @@ def main(argv=None):
 
             # The updated content becomes old content for successive query
             old_content = new_content
+
         else:
+
             result = current_time + " - Unchanged - " + website_url + "\n"
 
         #3 Log result
