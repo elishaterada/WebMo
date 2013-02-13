@@ -10,9 +10,7 @@ Setup
 
 1. Add your Gmail account information in settings.cfg
 
-2. Enter following arguments and run
-- Full website URL
-- Monitor frequency in seconds (e.g. 3600 for 1 hour)
+2. Run the program with full website URL path and monitor frequency in seconds
 
 Notice
 ------
