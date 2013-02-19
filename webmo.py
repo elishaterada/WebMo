@@ -28,8 +28,8 @@ def website_content_query(website_url):
     try:
         soup = BeautifulSoup(urllib2.urlopen(website_url))
         website_content = str(soup)
-    except urllib2.HTTPError:
-        print "There is an error with website"
+    except urllib2.HTTPError or urllib2.URLError:
+        print "There is an error with the request"
         return
 
     return website_content
