@@ -1,7 +1,7 @@
 WebMo
 ========
 
-*Version 0.23*
+*Version 0.24*
 
 WebMo is a Python script that monitors the website notify you via email when any difference is found.
 

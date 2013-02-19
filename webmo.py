@@ -80,8 +80,16 @@ def main(argv=None):
     while True:
 
         #2 Compare length of old and new content and process the result
-        new_content = website_content_query(website_url)
+        temp_new_content = website_content_query(website_url)
 
+        # If there is an error with query result, skip this round of check
+        if temp_new_content is None:
+            time.sleep(int(monitor_frequency))
+            continue
+        else:
+            new_content = temp_new_content
+
+        # Send notification if there is any difference
         if len(new_content) != len(old_content):
 
             current_time = pretty_time()
@@ -93,8 +101,9 @@ def main(argv=None):
             # The updated content becomes old content for successive query
             old_content = new_content
 
+        # Record unchanged if there is no difference
         else:
-
+            current_time = pretty_time()
             result = current_time + " - Unchanged - " + website_url + "\n"
 
         #3 Log result
@@ -102,7 +111,6 @@ def main(argv=None):
             f.write(result)
 
         #4 Wait for specified time period
-        # print "Waiting for next process in", int(monitor_frequency), "seconds"
         time.sleep(int(monitor_frequency))
 
 if __name__ == "__main__":
