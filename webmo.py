@@ -41,14 +41,15 @@ def send_notification(result):
     # Load and parse config file
     parser = SafeConfigParser()
     parser.read('settings.cfg')
-    recipient_email = parser.get('email', 'recipient')
+    recipient_email_str = parser.get('email', 'recipient')
+    recipient_email_list = recipient_email_str.split()
     gmail_user = parser.get('email', 'gmail_user')
     gmail_pwd = parser.get('email', 'gmail_pwd')
 
     # Create minimal message
     msg = MIMEText(result)
     msg['From'] = gmail_user
-    msg['To'] = recipient_email
+    msg['To'] = recipient_email_str
     msg['Subject'] = "Notification"
 
     # Send message
@@ -57,7 +58,7 @@ def send_notification(result):
     mail_server.starttls()
     mail_server.ehlo()
     mail_server.login(gmail_user, gmail_pwd)
-    mail_server.sendmail(gmail_user, recipient_email, msg.as_string())
+    mail_server.sendmail(gmail_user, recipient_email_list, msg.as_string())
     mail_server.close()
     return
 
